@@ -61,8 +61,10 @@ const App = () => {
   const searchUsers = (str: string) => {
     const arrUsers = auxUsers
     str =  removeAccent(str).toUpperCase()
-    setUSers(arrUsers.filter((d) => (removeAccent(d.name.first).toUpperCase() + ' ' + removeAccent(d.name.last).toUpperCase()).includes(str)
-    || d.email.toUpperCase().includes(str) || (d.gender.toUpperCase() == "MALE" ? "MASCULINO" : "FEMININO").includes(str)
+    setUSers(arrUsers.filter((s) => 
+      (removeAccent(s.name.first).toUpperCase() + ' ' + removeAccent(s.name.last).toUpperCase()).includes(str)
+      || s.email.toUpperCase().includes(str) 
+      || (s.gender.toUpperCase() == "MALE" ? "MASCULINO" : "FEMININO").includes(str)
     ))
   }
 
