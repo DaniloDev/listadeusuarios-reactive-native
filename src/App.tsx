@@ -54,10 +54,14 @@ const App = () => {
   }
   }
 
+  const removeAccent = (str: string) => {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+  }
+
   const searchUsers = (str: string) => {
     const arrUsers = auxUsers
-    str =  str.toUpperCase()
-    setUSers(arrUsers.filter((d) => (d.name.first.toUpperCase() + ' ' + d.name.last.toUpperCase()).includes(str)
+    str =  removeAccent(str).toUpperCase()
+    setUSers(arrUsers.filter((d) => (removeAccent(d.name.first).toUpperCase() + ' ' + removeAccent(d.name.last).toUpperCase()).includes(str)
     || d.email.toUpperCase().includes(str) || (d.gender.toUpperCase() == "MALE" ? "MASCULINO" : "FEMININO").includes(str)
     ))
   }
